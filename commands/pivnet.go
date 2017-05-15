@@ -53,10 +53,13 @@ var (
 type PivnetCommand struct {
 	VersionFunc func() `short:"v" long:"version" description:"Print the version of this CLI and exit"`
 
+	SkipSSLValidation bool `short:"k" long:"skip-ssl-validation" description:"Skip TLS/SSL Validation"`
+
 	Format  string `long:"format" description:"Format to print as" default:"table" choice:"table" choice:"json" choice:"yaml"`
 	Verbose bool   `long:"verbose" description:"Display verbose output"`
 
-	ProfileName string `long:"profile" description:"Name of profile" default:"default"`
+        ProfileName string `long:"profile" description:"Name of profile" default:"default"`
+
 	ConfigFile  string `long:"config" description:"Path to config file"`
 
 	Login  LoginCommand  `command:"login" alias:"l" description:"Log in to Pivotal Network."`
@@ -164,6 +167,7 @@ func NewPivnetClientWithToken(apiToken string, host string) *gp.Client {
 			Token:     apiToken,
 			Host:      host,
 			UserAgent: Pivnet.userAgent,
+			SkipSSLValidation: Pivnet.SkipSSLValidation,
 		},
 		Pivnet.Logger,
 	)
