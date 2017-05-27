@@ -85,10 +85,10 @@
 		},
 		{
 			"importpath": "github.com/pivotal-cf/go-pivnet",
-			"repository": "https://github.com/pivotal-cf/go-pivnet",
+			"repository": "https://github.com/svrc-pivotal/go-pivnet",
 			"vcs": "git",
-			"revision": "4facd3f649a0757d4bc266bef702e1f1a2636406",
-			"branch": "develop",
+			"revision": "2e4c0e28e6b69bdb45e55083d72410991c4f7751",
+			"branch": "retry_count",
 			"notests": true
 		},
 		{
