@@ -51,6 +51,7 @@ type ClientConfig struct {
 	Token             string
 	UserAgent         string
 	SkipSSLValidation bool
+	Retries           string
 }
 
 func NewClient(
@@ -71,9 +72,10 @@ func NewClient(
 
 	ranger := download.NewRanger(concurrentDownloads)
 	downloader := download.Client{
-		HTTPClient: http.DefaultClient,
+		HTTPClient: httpClient,
 		Ranger:     ranger,
 		Logger:     logger,
+		Retries:    config.Retries,
 	}
 
 	client := Client{
